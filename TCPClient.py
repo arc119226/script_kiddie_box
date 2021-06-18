@@ -9,7 +9,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     # create connect
     client.connect((target_host, target_port))
     # send data as byte
-    client.send(b'ABCDEF')
+    client.send(b'ABCDE')
     # receive data
     response = client.recv(4096)
     # print it

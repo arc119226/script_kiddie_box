@@ -14,14 +14,16 @@ def main():
         while True:
             client, address = server.accept()
             print(f'[*] accept connection from {address[0]}:{address[1]}')
-            runner = threading.Thread(target=handle_client,args=(client,))
+            runner = threading.Thread(target=handle_client, args=(client,))
             runner.start()
+
 
 def handle_client(client_socket):
     with client_socket as sock:
         request = sock.recv(1024)
         print(request.decode('utf-8'))
         sock.send(b'ACK')
+
 
 if __name__ == '__main__':
     main()
