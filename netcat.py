@@ -1,3 +1,4 @@
+# echo -ne "GET / HTTP/1.1\r\nHost: reachtim.com\r\n\r\n" |python ./netcat.py -t reachtim.com -p 80
 import argparse
 import socket
 import shlex
