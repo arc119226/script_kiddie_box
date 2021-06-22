@@ -1,3 +1,5 @@
+# proxy.py <local ip> <local port> <remote ip> <remote port> <True|False>
+
 import sys
 import socket
 import threading
