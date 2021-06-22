@@ -5,7 +5,7 @@ import sys
 import threading
 
 CWD = os.path.dirname(os.path.realpath(__file__))
-HOSTKEY = paramiko.RSAKey(filename=os.path.join(CWD, '.test_rsa.key'))
+HOSTKEY = paramiko.RSAKey(filename=os.path.join(CWD, 'id_rsa'))
 
 
 class Server (paramiko.ServerInterface):
@@ -18,13 +18,13 @@ class Server (paramiko.ServerInterface):
         return paramiko.OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED
 
     def check_auth_password(self, username, password):
-        if (username == 'tim') and (password == 'sekret'):
+        if (username == 'arc') and (password == 'arcarc'):
             return paramiko.AUTH_SUCCESSFUL
 
 
 if __name__ == '__main__':
-    server = '192.168.1.207'
-    ssh_port = 2222
+    server = '192.168.1.101'
+    ssh_port = 22
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
