@@ -6,8 +6,9 @@ import sys
 import textwrap
 import threading
 
+
 class NetCat:
-    def __init__(self,args,buffer=None):
+    def __init__(self, args, buffer=None):
         self.args = args
         self.buffer = buffer
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -34,10 +35,9 @@ class NetCat:
                     response += data.decode()
                     if recv_len < 4096:
                         break
-
                 if response:
                     print(response)
-                    buffer = input('> ')
+                    buffer = input('please input data...')
                     buffer += '\n'
                     self.socket.send(buffer.encode())
         except KeyboardInterrupt:
@@ -91,7 +91,6 @@ class NetCat:
                     sys.exit()
 
 
-
 def execute(cmd):
     cmd = cmd.strip()
     if not cmd:
@@ -100,7 +99,7 @@ def execute(cmd):
     return output.decode()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='BHP Net Tool',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -121,9 +120,9 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     if args.listen:
-        buffer=''
+        buffer = ''
     else:
         buffer = sys.stdin.read()
 
-    nc = NetCat(args,buffer.encode())
+    nc = NetCat(args, buffer.encode())
     nc.run()
